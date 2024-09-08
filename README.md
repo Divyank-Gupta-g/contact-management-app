@@ -21,3 +21,6 @@ This is a Contact Management Application built using Java Spring Boot and MySQL.
 - **Database**: MySQL
 - **Security**: Spring Security, OAuth2
 - **Other**: Email verification, Excel export, Email sending, Encrypted Password
+
+- ## Images
+- Home Page (https://github.com/Divyank-Gupta-g/contact-management-app/blob/f2e1e4c68554416a7631f4f916a84db79b87aecb/images/Screenshot%20(1262).png)
