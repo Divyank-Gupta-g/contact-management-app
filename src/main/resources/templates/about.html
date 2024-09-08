@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base ::parent(~{::#content},~{::title},~{::script})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>About</title>
+</head>
+<body>
+    <div id="content" class="flex flex-col items-center justify-center min-h-screen p-4">
+        <div class="bg-teal-800 dark:bg-gray-800 shadow-lg rounded-lg p-8 max-w-4xl shadow-xl">
+            <h1 class="text-4xl font-bold text-gray-800 text-white dark:text-white mb-4">About Smart Contact Management</h1>
+            <p class="text-lg text-gray-300 dark:text-gray-300 mb-4">
+                Welcome to Smart Contact Management (SCM), your ultimate solution for managing contacts efficiently. Our platform is designed to provide a seamless experience, ensuring your contacts are always organized and easily accessible.
+            </p>
+            <h2 class="text-3xl font-semibold text-white dark:text-white mt-6 mb-4">Our Mission</h2>
+            <p class="text-lg text-gray-300 dark:text-gray-300 mb-4">
+                At SCM, our mission is to simplify contact management by offering a user-friendly interface combined with powerful features. Whether you're an individual or a business, our tool is designed to cater to your specific needs, ensuring that managing contacts is no longer a chore.
+            </p>
+            <h2 class="text-3xl font-semibold text-white dark:text-white mt-6 mb-4">Key Features</h2>
+            <ul class="list-disc list-inside text-lg text-gray-300 dark:text-gray-300 mb-4">
+                <li>Efficient contact organization</li>
+                <li>Seamless synchronization across devices</li>
+                <li>Advanced search and filter options</li>
+                <li>Secure and encrypted data storage</li>
+                <li>Intuitive and user-friendly interface</li>
+            </ul>
+            <h2 class="text-3xl font-semibold text-white dark:text-white mt-6 mb-4">Why Choose SCM?</h2>
+            <p class="text-lg text-gray-300 dark:text-gray-300 mb-4">
+                SCM stands out due to its combination of simplicity and functionality. Our goal is to make contact management effortless, allowing you to focus on building and maintaining relationships rather than getting bogged down by technicalities.
+            </p>
+            <div class="flex items-center mt-6">
+                <img data-th-src="@{'/images/Users.png'}" class="h-20 w-20 rounded-full mr-4" alt="Team Image" />
+                <div>
+                    <h3 class="text-2xl font-bold text-white dark:text-white">Our Team</h3>
+                    <p class="text-lg text-gray-300 dark:text-gray-300">A dedicated team of professionals committed to delivering the best contact management solution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>console.log("about page");</script>
+</body>
+</html>

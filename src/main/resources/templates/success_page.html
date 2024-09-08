@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base ::parent(~{::#content},~{::title},~{::script})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+	<div id="content" class="text-center">
+		<div data-th-replace="message::messageBox"></div>
+		
+		<h1>Email verified successfully....</h1>
+		<h2>Please login to use your SCM account...</h2>
+		
+		<a data-th-href="@{'/login'}" type="button" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">LogIn</a>
+	</div>
+	
+	<script>console.log("success page");</script>
+</body>
+</html>

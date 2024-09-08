@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base ::parent(~{::#content},~{::title},~{::script})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign Up</title>
+</head>
+<body>
+	<div id="content">
+	
+	<!-- Card -->
+		<div class="grid grid-cols-12">
+		<div class="col-span-3"></div>
+			<div class="mb-5 col-span-6">
+				<div 
+					class="block shadow-xl max-w-m p-6 bg-teal-200 border border-t-4 border-teal-500 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800 dark:shadow-2xl dark:shadow-white-800">
+
+					<!-- message here -->
+					<div data-th-replace="message::messageBox"></div>
+					<h5
+						class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Signup Here...</h5>
+					<p class="font-normal text-gray-700 dark:text-gray-400">Register here to manage your contacts smartly...</p>
+
+					<!-- Sign up form -->
+					
+						<form data-th-action="@{'/Registration'}" method="post" data-th-object="${userForm}" class="mt-5 max-w-m mx-auto" enctype="multipart/form-data">
+						
+							<!-- name -->
+							<div class="mb-5">
+								<label for="name"
+									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label> 
+									<input type="text" id="name" data-th-field="*{name}"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="Enter your name..." required />
+									
+								<p 
+									data-th-if="${#fields.hasErrors('name')}"
+									data-th-errors="*{name}"
+								 	class="text-red-600 px-1 py-2">User is Required.</p>
+							</div>
+							
+							<!--  email -->
+							<div class="mb-5">
+								<label for="email"
+									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">email address</label> 
+									<input type="email" id="email"  data-th-field="*{email}"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="Enter your email id..." required />
+								
+								<p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">We’ll never share your details. Read our 
+									<a href="#" id="openPrivacyPolicyModal" class="font-medium text-blue-600 hover:underline dark:text-blue-500" data-modal-target="view-privacy-modal" data-modal-toggle="view-privacy-modal">Privacy Policy</a>.
+								</p>
+								<p 
+									data-th-if="${#fields.hasErrors('email')}"
+									data-th-errors="*{email}"
+								 	class="text-red-600 px-1 py-2">Email is Required.</p>
+							</div>
+							
+							<!--  phone number -->
+							<div class="mb-5">
+								<label for="phoneNumber"
+									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Number</label> 
+									<input type="text" id="phoneNumber"  data-th-field="*{phoneNumber}"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="Enter your phone number..." required />
+									
+								<p 
+									data-th-if="${#fields.hasErrors('phoneNumber')}"
+									data-th-errors="*{phoneNumber}"
+								 	class="text-red-600 px-1 py-2"></p>
+							</div>
+							
+							<!-- password -->
+							<div class="mb-5">
+								<label for="password"
+									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label> 
+									<input type="password" id="password"  data-th-field="*{password}"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="Set a strong password..." required />
+									
+								<p 
+									data-th-if="${#fields.hasErrors('password')}"
+									data-th-errors="*{password}"
+								 	class="text-red-600 px-1 py-2"></p>
+							</div>
+							
+							<!-- upload image -->
+							<div class="mb-5">
+								<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="large_size">User Image</label>
+								<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+									data-th-field="*{profileImage}" type="file">
+								<p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="profilePic">SVG, PNG, JPG or GIF (MAX. 600x600px).</p>
+								
+								<!-- image validation -->
+								<p class="text-red-500" data-th-if="${#fields.hasErrors('profileImage')}" data-th-errors="*{profileImage}">Invalid File</p>
+								
+								<!-- image preview -->
+								<img class="max-h-52 mx-auto rounded-lg shadow m-3" alt="profile_image" src="" id="upload_image_preview">
+							</div>
+							
+							<!--  about -->
+							<div class="mb-5">
+								<label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">About</label>
+  								<textarea id="about"  data-th-field="*{about}" rows="4" 
+  								class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+  								placeholder="Write something about yourself..."></textarea>
+  								
+  								<p 
+									data-th-if="${#fields.hasErrors('about')}"
+									data-th-errors="*{about}"
+								 	class="text-red-600 px-1 py-2"></p>
+							</div>
+							
+							<!--  checkbox -->
+							<div class="flex items-start mb-5">
+								<div class="flex items-center h-5">
+									<input id="remember" type="checkbox" value=""
+										class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+										required />
+								</div>
+								<label for="remember"
+									class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree to the 
+									<a href="#" id="openTermsModal" class="font-medium text-blue-600 hover:underline dark:text-blue-500" data-modal-target="view-terms-modal" data-modal-toggle="view-terms-modal">terms and conditions</a>.
+								</label>
+							</div>
+							
+							<!--  buttons -->
+							<div class="flex justify-center gap-2">
+								<button type="submit"
+									class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+								
+								<button type="reset"
+									class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Reset</button>
+							</div>
+							<div data-th-replace="~{privacy-policy-modal ::privacy}"></div>
+							<div data-th-replace="~{terms-and-condition-modal ::terms}"></div>
+						</form>
+
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<script data-th-src="@{'/js/terms-condition-modal.js'}"></script>
+	<script data-th-src="@{'/js/privacy-policy-modal.js'}"></script>
+	<script>console.log("sign up page");</script>
+</body>
+</html>

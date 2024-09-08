@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base ::parent(~{::#content},~{::title},~{::script})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title data-th-text="${CurrentUser.name}"></title>
+</head>
+<body>
+	<div id="content" class="flex flex-col items-center justify-center min-h-screen p-4">
+		<!-- Sidebar if user logged in -->
+		<div data-th-if="${CurrentUser}">
+			<div data-th-replace="~{user/sidebar ::sidebar}"></div>
+		</div>
+
+		<!-- Feedback Form Content -->
+		<div class="sm:pl-64 pt-20">
+		<div class="grid grid-cols-12">
+		<div class="col-span-3"></div>
+			<div class="col-span-12 mb-5 md:col-span-6">
+				<div
+					class="block shadow-xl max-w-m p-6 bg-teal-200 border border-t-4 border-teal-500 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800 dark:shadow-2xl dark:shadow-white-800">
+					
+					<!-- Intro of form -->
+					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Feedback Form...</h5>
+					<p class="mb-2 font-normal text-gray-700 dark:text-gray-400">Write Feedback/complaint/suggestion...</p>
+
+
+							<!-- Feedback Form -->
+							<form 
+								method="post" 
+								data-th-action="@{'/user/feedback'}" 
+								data-th-object="${feedbackForm}"
+								class="mt-5 max-w-m mx-auto">
+								
+								<!-- Name -->
+								<div class="mb-5">
+									<label for="name" class="block mb-2 text-sm font-medium">Name</label>
+									  <div class="flex">
+									    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+									      <i class="fa-regular fa-circle-user"></i>
+									    </span>
+									    <input type="text" data-th-field="*{name}"
+									    	class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Name">
+									  </div>
+								</div>
+								
+								<!-- Email -->
+								<div class="mb-5">
+									<label for="email" class="block mb-2 text-sm font-medium">Email Address</label> 
+									<div class="flex">
+									    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+									      <i class="fa-solid fa-at"></i>
+									    </span>
+									    <input type="email" data-th-field="*{email}"
+									     	class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="xyz@scm.com">
+									  </div>
+									<p id="helper-text-explanation" class="text-sm text-gray-300 dark:text-gray-400">
+										We’ll never share your details. Read our 
+										<a href="#" id="openPrivacyPolicyModal" class="font-medium text-blue-600 hover:underline dark:text-blue-500" data-modal-target="view-privacy-modal" data-modal-toggle="view-privacy-modal">Privacy Policy</a>.
+									</p>
+								</div>
+								
+								<!-- Phone Number -->
+								<div class="mb-5">
+									<label for="phoneNumber" class="block mb-2 text-sm font-medium">Contact Number</label> 
+									<div class="flex">
+									    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+									      <i class="fa-solid fa-phone"></i>
+									    </span>
+									    <input type="number" data-th-field="*{phoneNumber}"
+									    	 class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-teal-500 focus:border-teal-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="91xxxxxxxx">
+									  </div>
+								</div>
+								
+								<!-- Address -->
+								<div class="mb-5">
+									<label for="address" class="block mb-2 text-sm font-medium">Address</label>
+	  								<textarea rows="4" data-th-field="*{address}"
+	  									class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+	  									placeholder="Enter complete address..."></textarea>
+								</div>
+									
+								<!-- Option -->
+								<div class="mb-5">
+									<label for="coice" class="block mb-2 text-sm font-medium">Select an option</label>
+									  <select data-th-field="*{type}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+									    <option selected value="">Choose an Option</option>
+									    <option value="Complaint">Complaint</option>
+									    <option value="feedback">Feedback / Suggestion</option>
+									  </select>
+								</div>
+									
+								<!-- Description -->
+								<div class="mb-5">
+									<label for="description" class="block mb-2 text-sm font-medium">Description</label>
+	  								<textarea rows="4" data-th-field="*{description}"
+	  									class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+	  									placeholder="Explain here..."></textarea>
+								</div>
+								
+								<!-- Submit Button -->
+								<button type="submit" 
+									class="inline-flex items-center px-5 py-2.5 mt-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-300 hover:bg-blue-800">
+									Submit 
+									<i class="ml-1 fa-regular fa-paper-plane"></i>
+								</button>
+							
+							</form>
+							
+						</div>
+						
+	                </div>
+	            </div>
+	        </div>
+	        <div data-th-replace="~{privacy-policy-modal ::privacy}"></div>
+	    </div>
+	 <div>					
+</div>
+	<script data-th-src="@{'/js/privacy-policy-modal.js'}"></script>
+	<script>console.log("User Feedback Form");</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base ::parent(~{::#content},~{::title},~{::script})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <div id="content" class="flex flex-col items-center justify-center min-h-screen">
+        <div class="flex gap-4">
+        	<img data-th-src="@{'/images/communicate.png'}" class="h-80 shadow-lg mb-4" alt="SCM Logo" />
+	        <div class="flex flex-col gap-4">
+	        	<div>
+	        		<span class="self-center text-8xl font-bold text-gray-800 dark:text-white">S</span>
+	        		<span class="self-center text-4xl font-semibold text-gray-800 dark:text-white">mart</span>
+	        	</div>
+	        	<div>
+	        		<span class="self-center text-8xl font-bold text-gray-800 dark:text-white">C</span>
+	        		<span class="self-center text-4xl font-semibold text-gray-800 dark:text-white">ontact</span>
+	        	</div>
+	        	<div>
+	        		<span class="self-center text-8xl font-bold text-gray-800 dark:text-white">M</span>
+	        		<span class="self-center text-4xl font-semibold text-gray-800 dark:text-white">anagement</span>
+	        	</div>
+	        </div>
+        </div>
+        
+        <span class="self-center text-3xl font-semibold text-gray-800 dark:text-white">Manage Your Contacts Smartly...</span>
+        
+    </div>
+    <script>console.log("home page");</script>
+</body>
+</html>

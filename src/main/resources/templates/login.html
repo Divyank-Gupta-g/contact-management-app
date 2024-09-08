@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base ::parent(~{::#content},~{::title},~{::script})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LogIn</title>
+</head>
+<body>
+	<div id="content">
+	
+	<!-- Card -->
+		<div class="grid grid-cols-12">
+		<div class="col-span-3"></div>
+			<div class="mb-5 col-span-6">
+				<div
+					class="block shadow-xl max-w-m p-6 bg-teal-200 border border-t-4 border-teal-500 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800 dark:shadow-2xl dark:shadow-white-800">
+
+					<!-- message here -->
+					<div data-th-replace="message::messageBox"></div>
+					<h5
+						class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">LogIn
+						Here...</h5>
+					<p class="font-normal text-gray-700 dark:text-gray-400">Start
+						managing your contacts smartly...</p>
+
+					<div class="text-red-600 text-center my-3" th:if="${param.error}">Invalid
+						username and password.</div>
+					<div class="text-green-600 text-center my-3"
+						th:if="${param.logout}">You have been logged out.</div>
+
+					<!-- log In form -->
+
+					<form method="post" data-th-action="@{'/authenticate'}"
+						class="mt-5 max-w-m mx-auto">
+
+						<!--  user name(email) -->
+						<div class="mb-5">
+							<label for="email"
+								class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">email
+								address</label> <input name="email" type="email" id="email"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								placeholder="Enter your email id..." required />
+
+							<p id="helper-text-explanation"
+								class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+								We’ll never share your details. Read our 
+								<a href="#" id="openPrivacyPolicyModal" class="font-medium text-blue-600 hover:underline dark:text-blue-500" data-modal-target="view-privacy-modal" data-modal-toggle="view-privacy-modal">Privacy Policy</a>.
+							</p>
+							<!-- <p 
+									data-th-if="${#fields.hasErrors('email')}"
+									data-th-errors="*{email}"
+								 	class="text-red-600 px-1 py-2">Email is Required.</p> -->
+						</div>
+
+						<!-- password -->
+						<div class="mb-5">
+							<label for="password"
+								class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+							<input name="password" type="password" id="password"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								placeholder="Set a strong password..." required />
+
+							<!-- <p 
+									data-th-if="${#fields.hasErrors('password')}"
+									data-th-errors="*{password}"
+								 	class="text-red-600 px-1 py-2"></p> -->
+						</div>
+
+						<!--  checkbox -->
+						<div class="flex items-start mb-5">
+							<div class="flex items-center h-5">
+								<input id="remember" type="checkbox" value=""
+									class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+									required />
+							</div>
+							<label for="remember"
+								class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I
+								agree to the 
+								<a href="#" id="openTermsModal" class="font-medium text-blue-600 hover:underline dark:text-blue-500" data-modal-target="view-terms-modal" data-modal-toggle="view-terms-modal">terms and conditions</a>.
+							</label>
+						</div>
+
+						<!--  buttons -->
+						<div class="flex justify-center gap-5">
+							
+							<button type="submit"
+							    class="bg-[linear-gradient(#e9e9e9,#e9e9e9_50%,#fff)] group w-50 h-16 inline-flex transition-all duration-300 overflow-visible p-1 rounded-full group"
+							  >
+							    <div
+							      class="w-full h-full bg-[linear-gradient(to_top,#ececec,#fff)] overflow-hidden shadow-[0_0_1px_rgba(0,0,0,0.07),0_0_1px_rgba(0,0,0,0.05),0_3px_3px_rgba(0,0,0,0.25),0_1px_3px_rgba(0,0,0,0.12)] p-1 rounded-full hover:shadow-none duration-300"
+							    >
+							      <div
+							        class="w-full h-full text-xl gap-x-0.5 gap-y-0.5 justify-center text-[#101010] bg-[linear-gradient(#f4f4f4,#fefefe)] group-hover:bg-[linear-gradient(#e2e2e2,#fefefe)] duration-200 items-center text-[18px] font-medium gap-4 inline-flex overflow-hidden px-4 py-2 rounded-full black group-hover:text-blue-600"
+							      >
+							        <span class="ml-2">LogIn</span>
+							      </div>
+							    </div>
+							 </button>
+							 
+							 <button type="reset"
+							    class="bg-[linear-gradient(#e9e9e9,#e9e9e9_50%,#fff)] group w-50 h-16 inline-flex transition-all duration-300 overflow-visible p-1 rounded-full group"
+							  >
+							    <div
+							      class="w-full h-full bg-[linear-gradient(to_top,#ececec,#fff)] overflow-hidden shadow-[0_0_1px_rgba(0,0,0,0.07),0_0_1px_rgba(0,0,0,0.05),0_3px_3px_rgba(0,0,0,0.25),0_1px_3px_rgba(0,0,0,0.12)] p-1 rounded-full hover:shadow-none duration-300"
+							    >
+							      <div
+							        class="w-full h-full text-xl gap-x-0.5 gap-y-0.5 justify-center text-[#101010] bg-[linear-gradient(#f4f4f4,#fefefe)] group-hover:bg-[linear-gradient(#e2e2e2,#fefefe)] duration-200 items-center text-[18px] font-medium gap-4 inline-flex overflow-hidden px-4 py-2 rounded-full black group-hover:text-blue-600"
+							      >
+							        <span class="ml-2">Reset</span>
+							      </div>
+							    </div>
+							 </button>
+						</div>
+						
+						<div data-th-replace="~{privacy-policy-modal ::privacy}"></div>
+						<div data-th-replace="~{terms-and-condition-modal ::terms}"></div>
+					</form>
+
+					<!-- Sign in with google. -->
+					<div
+						class="flex justify-center items-center py-5">
+						<a type="button"
+							class="bg-[linear-gradient(#e9e9e9,#e9e9e9_50%,#fff)] group w-50 h-16 inline-flex transition-all duration-300 overflow-visible p-1 rounded-full group"
+							data-th-href="@{'/oauth2/authorization/google'}">
+							<div
+								class="w-half h-full bg-[linear-gradient(to_top,#ececec,#fff)] overflow-hidden shadow-[0_0_1px_rgba(0,0,0,0.07),0_0_1px_rgba(0,0,0,0.05),0_3px_3px_rgba(0,0,0,0.25),0_1px_3px_rgba(0,0,0,0.12)] p-1 rounded-full hover:shadow-none duration-300">
+								<div
+									class="w-full h-full text-xl gap-x-0.5 gap-y-0.5 justify-center text-[#101010] bg-[linear-gradient(#f4f4f4,#fefefe)] group-hover:bg-[linear-gradient(#e2e2e2,#fefefe)] duration-200 items-center text-[18px] font-medium gap-4 inline-flex overflow-hidden px-4 py-2 rounded-full black group-hover:text-blue-600">
+									<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64" height="32px" width="24px">
+							            <g fill-rule="evenodd" fill="none" stroke-width="1" stroke="none">
+							              <g fill-rule="nonzero" transform="translate(3.000000, 2.000000)">
+							                <path fill="#4285F4" d="M57.8123233,30.1515267 C57.8123233,27.7263183 57.6155321,25.9565533 57.1896408,24.1212666 L29.4960833,24.1212666 L29.4960833,35.0674653 L45.7515771,35.0674653 C45.4239683,37.7877475 43.6542033,41.8844383 39.7213169,44.6372555 L39.6661883,45.0037254 L48.4223791,51.7870338 L49.0290201,51.8475849 C54.6004021,46.7020943 57.8123233,39.1313952 57.8123233,30.1515267"></path>
+							                <path fill="#34A853" d="M29.4960833,58.9921667 C37.4599129,58.9921667 44.1456164,56.3701671 49.0290201,51.8475849 L39.7213169,44.6372555 C37.2305867,46.3742596 33.887622,47.5868638 29.4960833,47.5868638 C21.6960582,47.5868638 15.0758763,42.4415991 12.7159637,35.3297782 L12.3700541,35.3591501 L3.26524241,42.4054492 L3.14617358,42.736447 C7.9965904,52.3717589 17.959737,58.9921667 29.4960833,58.9921667"></path>
+							                <path fill="#FBBC05" d="M12.7159637,35.3297782 C12.0932812,33.4944915 11.7329116,31.5279353 11.7329116,29.4960833 C11.7329116,27.4640054 12.0932812,25.4976752 12.6832029,23.6623884 L12.6667095,23.2715173 L3.44779955,16.1120237 L3.14617358,16.2554937 C1.14708246,20.2539019 0,24.7439491 0,29.4960833 C0,34.2482175 1.14708246,38.7380388 3.14617358,42.736447 L12.7159637,35.3297782"></path>
+							                <path fill="#EB4335" d="M29.4960833,11.4050769 C35.0347044,11.4050769 38.7707997,13.7975244 40.9011602,15.7968415 L49.2255853,7.66898166 C44.1130815,2.91684746 37.4599129,0 29.4960833,0 C17.959737,0 7.9965904,6.62018183 3.14617358,16.2554937 L12.6832029,23.6623884 C15.0758763,16.5505675 21.6960582,11.4050769 29.4960833,11.4050769"></path>
+							              </g>
+							            </g>
+							         </svg>
+									<span class="ml-2">Sign In with Google</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					
+					<!-- Sign in with github. -->
+					<div
+						class="flex justify-center items-center">
+						<a type="button"
+							class="bg-[linear-gradient(#e9e9e9,#e9e9e9_50%,#fff)] group w-50 h-16 inline-flex transition-all duration-300 overflow-visible p-1 rounded-full group"
+							data-th-href="@{'/oauth2/authorization/github'}">
+							<div
+								class="w-half h-full bg-[linear-gradient(to_top,#ececec,#fff)] overflow-hidden shadow-[0_0_1px_rgba(0,0,0,0.07),0_0_1px_rgba(0,0,0,0.05),0_3px_3px_rgba(0,0,0,0.25),0_1px_3px_rgba(0,0,0,0.12)] p-1 rounded-full hover:shadow-none duration-300">
+								<div
+									class="w-full h-full text-xl gap-x-0.5 gap-y-0.5 justify-center text-[#101010] bg-[linear-gradient(#f4f4f4,#fefefe)] group-hover:bg-[linear-gradient(#e2e2e2,#fefefe)] duration-200 items-center text-[18px] font-medium gap-4 inline-flex overflow-hidden px-4 py-2 rounded-full black group-hover:text-blue-600">
+									<svg id="Github" viewBox="0 0 16 16"
+										xmlns="http://www.w3.org/2000/svg" height="24" width="24">
+          								<path class="color5c6bc0 svgShape"
+											d="M7.999 0C3.582 0 0 3.596 0 8.032a8.031 8.031 0 0 0 5.472 7.621c.4.074.546-.174.546-.387 0-.191-.007-.696-.011-1.366-2.225.485-2.695-1.077-2.695-1.077-.363-.928-.888-1.175-.888-1.175-.727-.498.054-.488.054-.488.803.057 1.225.828 1.225.828.714 1.227 1.873.873 2.329.667.072-.519.279-.873.508-1.074-1.776-.203-3.644-.892-3.644-3.969 0-.877.312-1.594.824-2.156-.083-.203-.357-1.02.078-2.125 0 0 .672-.216 2.2.823a7.633 7.633 0 0 1 2.003-.27 7.65 7.65 0 0 1 2.003.271c1.527-1.039 2.198-.823 2.198-.823.436 1.106.162 1.922.08 2.125.513.562.822 1.279.822 2.156 0 3.085-1.87 3.764-3.652 3.963.287.248.543.738.543 1.487 0 1.074-.01 1.94-.01 2.203 0 .215.144.465.55.386A8.032 8.032 0 0 0 16 8.032C16 3.596 12.418 0 7.999 0z"
+											fill="#000000"></path>
+        							</svg>
+									<span class="ml-2">Sign In with GitHub</span>
+								</div>
+							</div>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script data-th-src="@{'/js/privacy-policy-modal.js'}"></script>
+	<script data-th-src="@{'/js/terms-condition-modal.js'}"></script>
+	<script>console.log("login page");</script>
+</body>
+</html>

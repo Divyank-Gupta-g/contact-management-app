@@ -1,0 +1,69 @@
+<div data-th-fragment="contact">
+    <!-- Main modal -->
+    <div id="view_contact_modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-teal-200 rounded-lg shadow-xl overflow-hidden z-[100] flex flex-col items-center justify-center gap-3 transition-all duration-300 group">
+                <!-- Modal header -->
+                <div class="w-full flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <div class="avatar w-full pt-5 flex items-center justify-center flex-col gap-1">
+                        <div class="img_container w-full flex items-center justify-center relative z-40 after:absolute after:h-[6px] after:w-full after:bg-[#58b0e0] after:top-4 after:group-hover:size-[1%] after:delay-300 after:group-hover:delay-0 after:group-hover:transition-all after:group-hover:duration-300 after:transition-all after:duration-300 before:absolute before:h-[6px] before:w-full before:bg-[#58b0e0] before:bottom-4 before:group-hover:size-[1%] before:delay-300 before:group-hover:delay-0 before:group-hover:transition-all before:group-hover:duration-300 before:transition-all before:duration-300">
+                            <div class="border-4 border-white rounded-full group-hover:border-8 group-hover:transition-all group-hover:duration-300 transition-all duration-300 relative z-50">
+                            	<img
+                            		onerror="this.src='/images/Users.png';"
+                            	 	id="contact_image"
+                            	 	class="w-32 h-32 rounded-full"
+                            	 	alt="" src=""/>
+                            </div>
+                            
+                            <div class="absolute bg-[#58b0e0] z-10 size-[60%] w-full group-hover:size-[1%] group-hover:transition-all group-hover:duration-300 transition-all duration-300 delay-700 group-hover:delay-0"></div>
+                        </div>
+                    </div>
+                    <button onclick="closeContactModal()" type="button" class="absolute top-2 right-2 text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:text-white" data-modal-hide="default-modal">
+                        <i class="fa-solid fa-circle-xmark fa-2x"></i>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 space-y-4">
+                    <div class="headings *:text-center *:leading-4 flex flex-col items-center">
+                        <h3 id="contact_name" class="text-4xl font-serif font-semibold text-[#434955]"></h3>
+                        <p id="contact_email" class="text-xl font-semibold text-[#434955] mb-5"></p>
+                        <p id="contact_favourite"></p>
+                    </div>
+                    <div class="w-full items-center justify-center flex">
+                        <ul class="mt-4 flex flex-col items-start gap-4 has-[:last]:border-b-0 *:inline-flex *:gap-2 *:items-center *:justify-center *:border-b-[1.5px] *:border-b-stone-700 *:border-dotted *:text-xs *:font-semibold *:text-[#434955] pb-3">
+                            <li>
+                                <i class="fa-solid fa-phone fa-2x"></i>
+                                <p id="contact_phone" class="text-base"></p>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-globe fa-2x"></i>
+                                <a id="contact_website" class="text-base"></a>
+                            </li>
+                            <li>
+                                <i class="fa-brands fa-linkedin fa-2x"></i>
+                                <a id="contact_linkedin" class="text-base"></a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-location-dot fa-2x"></i>
+                                <p id="contact_address" class="text-base"></p>
+                            </li>
+                            <li>
+                            	<i class="fa-regular fa-address-card fa-2x"></i>
+                            	<p id="contact_description" class="text-base"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 edit-contact-button">Edit</button>
+                    <input type="hidden" id="contact_id" value="">
+                    <button data-modal-hide="default-modal" type="button" class="py-2.5 px-5 ms-3 rounded-full text-sm font-medium text-white focus:outline-none bg-red-600 rounded-lg hover:bg-red-800 hover:text-white focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 delete-user-button">Delete</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
