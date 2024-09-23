@@ -17,7 +17,7 @@ This is a Contact Management Application built using Java Spring Boot and MySQL.
 
 ## Technology Stack
 - **Backend**: Java Spring Boot
-- **Frontend**: Tailwind CSS, Thymeleaf
+- **Frontend**: Tailwind CSS, Thymeleaf, HTML, JavaScript
 - **Database**: MySQL
 - **Security**: Spring Security, OAuth2
 - **Other**: Email verification, Excel export, Email sending, Encrypted Password
